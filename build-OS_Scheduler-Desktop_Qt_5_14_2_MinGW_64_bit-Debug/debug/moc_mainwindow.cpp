@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[6];
-    char stringdata0[116];
+    char stringdata0[121];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,12 +37,12 @@ QT_MOC_LITERAL(1, 11, 40), // "on_algorithm_comboBox_current..."
 QT_MOC_LITERAL(2, 52, 0), // ""
 QT_MOC_LITERAL(3, 53, 4), // "arg1"
 QT_MOC_LITERAL(4, 58, 35), // "on_no_of_process_value_valueC..."
-QT_MOC_LITERAL(5, 94, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(5, 94, 26) // "on_simulate_button_clicked"
 
     },
     "MainWindow\0on_algorithm_comboBox_currentTextChanged\0"
     "\0arg1\0on_no_of_process_value_valueChanged\0"
-    "on_pushButton_clicked"
+    "on_simulate_button_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -80,7 +80,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_algorithm_comboBox_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->on_no_of_process_value_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->on_pushButton_clicked(); break;
+        case 2: _t->on_simulate_button_clicked(); break;
         default: ;
         }
     }

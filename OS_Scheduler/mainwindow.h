@@ -17,14 +17,14 @@ public:
     QVector<Process> get_data_from_table();
     QVector<Process> fcfs(QVector<Process>v,float &avg_waiting);
     void draw(QVector<Process>v,float a);
+    void set_process_time_line(QVector<Process>v);
 private slots:
-
 
     void on_algorithm_comboBox_currentTextChanged(const QString &arg1);
 
     void on_no_of_process_value_valueChanged(int arg1);
 
-    void on_pushButton_clicked();
+    void on_simulate_button_clicked();
 
 private:
     Ui::MainWindow *ui;

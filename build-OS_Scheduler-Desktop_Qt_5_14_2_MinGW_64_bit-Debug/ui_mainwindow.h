@@ -49,15 +49,19 @@ public:
     QLabel *quantum_label;
     QSpinBox *quantum_value;
     QTableWidget *data_table;
-    QPushButton *pushButton;
+    QPushButton *simulate_button;
     QTableWidget *gantt_chart;
     QLabel *avg_wait;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label;
+    QTableWidget *timeline;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1080, 716);
+        MainWindow->resize(1217, 773);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         project_label = new QLabel(centralwidget);
@@ -69,7 +73,7 @@ public:
         project_label->setFont(font);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(32, 92, 561, 141));
+        layoutWidget->setGeometry(QRect(32, 92, 551, 141));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -115,7 +119,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(32, 240, 561, 30));
+        layoutWidget1->setGeometry(QRect(32, 240, 551, 33));
         horizontalLayout_4 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -142,12 +146,13 @@ public:
 
         layoutWidget2 = new QWidget(centralwidget);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(697, 120, 141, 31));
+        layoutWidget2->setGeometry(QRect(30, 280, 551, 31));
         horizontalLayout_5 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
         quantum_label = new QLabel(layoutWidget2);
         quantum_label->setObjectName(QString::fromUtf8("quantum_label"));
+        quantum_label->setFont(font1);
 
         horizontalLayout_5->addWidget(quantum_label);
 
@@ -158,16 +163,39 @@ public:
 
         data_table = new QTableWidget(centralwidget);
         data_table->setObjectName(QString::fromUtf8("data_table"));
-        data_table->setGeometry(QRect(30, 290, 551, 261));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(660, 330, 161, 81));
+        data_table->setGeometry(QRect(30, 330, 551, 261));
+        simulate_button = new QPushButton(centralwidget);
+        simulate_button->setObjectName(QString::fromUtf8("simulate_button"));
+        simulate_button->setGeometry(QRect(30, 600, 161, 51));
         gantt_chart = new QTableWidget(centralwidget);
         gantt_chart->setObjectName(QString::fromUtf8("gantt_chart"));
-        gantt_chart->setGeometry(QRect(20, 580, 861, 91));
+        gantt_chart->setGeometry(QRect(30, 660, 1141, 91));
         avg_wait = new QLabel(centralwidget);
         avg_wait->setObjectName(QString::fromUtf8("avg_wait"));
-        avg_wait->setGeometry(QRect(680, 470, 201, 61));
+        avg_wait->setGeometry(QRect(770, 470, 401, 61));
+        QFont font2;
+        font2.setPointSize(12);
+        avg_wait->setFont(font2);
+        avg_wait->setStyleSheet(QString::fromUtf8(" border-style: solid;\n"
+"  border-color: black;\n"
+"  border-width: 7px;"));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(770, 90, 401, 311));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setFont(font2);
+
+        verticalLayout_2->addWidget(label);
+
+        timeline = new QTableWidget(widget);
+        timeline->setObjectName(QString::fromUtf8("timeline"));
+
+        verticalLayout_2->addWidget(timeline);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -190,8 +218,9 @@ public:
         Non_preemptive->setText(QCoreApplication::translate("MainWindow", "Non Preemptive", nullptr));
         preemptive->setText(QCoreApplication::translate("MainWindow", "Preemptive", nullptr));
         quantum_label->setText(QCoreApplication::translate("MainWindow", "Quantum", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
-        avg_wait->setText(QCoreApplication::translate("MainWindow", "Average Waiting : ", nullptr));
+        simulate_button->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
+        avg_wait->setText(QCoreApplication::translate("MainWindow", "Average Waiting Time : ", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Processes  Time Line", nullptr));
     } // retranslateUi
 
 };
