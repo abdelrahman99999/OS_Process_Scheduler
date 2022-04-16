@@ -16,6 +16,9 @@ public:
     ~MainWindow();
     QVector<Process> get_data_from_table();
     QVector<Process> fcfs(QVector<Process>v,float &avg_waiting);
+    QVector<Process> sjf_non_preemptive(QVector<Process>v,float &avg_waiting);
+    QVector<Process> sjf_preemptive(QVector<Process> processes, float &avr_wait);
+    //QVector<Process> RR(QVector<Process> rr_process, int quantum_time);
     void draw(QVector<Process>v,float a);
     void set_process_time_line(QVector<Process>v);
 private slots:
