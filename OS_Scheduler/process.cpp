@@ -1,9 +1,17 @@
 #include "process.h"
 
-Process::Process(int id,int burst_time,int arrival_time,int priority):process_ID(id),process_burst_time(burst_time),process_arrival_time(arrival_time),process_priority(priority)
-{
-
-}
+Process::Process(int id, int burst_time, int arrival_time, int priority , int s ,int e) :process_ID(id),
+    process_burst_time(burst_time),
+    process_arrival_time(arrival_time),
+    process_priority(priority)
+  {
+      start_time = s;
+      end_time = e;
+      rt = 0;
+      wt = 0;
+      tt = 0;
+      completed = 0;
+  }
 int Process::get_process_burst_time()const{
     return process_burst_time;
 }

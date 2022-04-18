@@ -9,13 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    fcfs_algorithm.cpp \
     main.cpp \
     mainwindow.cpp \
-    process.cpp
+    priority_algorithm.cpp \
+    process.cpp \
+    round_robin.cpp \
+    sjf_algorithm.cpp
 
 HEADERS += \
+    fcfs_algorithm.h \
     mainwindow.h \
-    process.h
+    priority_algorithm.h \
+    process.h \
+    round_robin.h \
+    sjf_algorithm.h
 
 FORMS += \
     mainwindow.ui
