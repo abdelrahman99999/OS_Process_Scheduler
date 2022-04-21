@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QColor>
-
+#include<QMessageBox>
 #include"process.h"
 #include<QtAlgorithms>
 #include"fcfs_algorithm.h"
@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     h<<"process id"<<"burst time"<<"arrival time"<<"priority";
     ui->data_table->setHorizontalHeaderLabels(h);
     ui->data_table->setItem(0,0, new QTableWidgetItem);
+    ui->quantum_value->setValue(2);
 }
 
 
@@ -99,9 +100,39 @@ QVector<Process> MainWindow::get_data_from_table(){
     return v;
 }
 
+bool MainWindow::vaild_data(){
+    QTableWidgetItem* item;
+    QTableWidgetItem* item1;
+    QTableWidgetItem* item2;
+    QTableWidgetItem* item3;
+    int no_of_processes=ui->no_of_process_value->value();
+    for(int i=0;i<no_of_processes;i++){
+        if(ui->algorithm_comboBox->currentText()=="3. Priority"){
+             item = ui->data_table->item(i,3);
+             if (!item || item->text().isEmpty() || item->text().toInt()<0)
+             {
+                 QMessageBox::critical(this,"error","please enter vaild data !!");
+                return 0;
+             }
+        }
+        item1 = ui->data_table->item(i,0);
+        item2 = ui->data_table->item(i,1);
+        item3 = ui->data_table->item(i,2);
+        if (    (!item1 || item1->text().isEmpty()||item1->text().toInt()<0)    ||
+                (!item2 || item2->text().isEmpty()||item2->text().toInt()<0)    ||
+                (!item3 || item3->text().isEmpty()||item3->text().toInt()<0)   )
+        {
+            QMessageBox::critical(this,"error","please enter vaild data !!");
+           return 0;
+        }
+    }
+    return 1;
+
+}
+
 void MainWindow::on_simulate_button_clicked()
 {
-    if(ui->no_of_process_value->value()>0){
+    if(ui->no_of_process_value->value()>0 && vaild_data()){
         QVector<Process>v = get_data_from_table();
         QString algorithm =ui->algorithm_comboBox->currentText();
         QString algo_type;
@@ -133,6 +164,10 @@ void MainWindow::on_simulate_button_clicked()
         }
         else if(algorithm=="4. Round Robin"){
             int quantum=ui->quantum_value->value();
+            if(quantum==0){
+                QMessageBox::critical(this,"error","please enter vaild quantum !!");
+                return;
+            }
             processes=round_robin::RR(v,quantum,avg_waiting);
         }
         draw(processes,avg_waiting);
